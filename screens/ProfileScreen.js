@@ -12,7 +12,7 @@ export default function ProfileScreen() {
         <SafeAreaView style={styles.container}>
             <Text style={styles.helloText}>Hello,</Text>
             <Text style={styles.firstNameText}>{firstName}</Text>
-            <StatusBar style="auto" />
+            <StatusBar style="auto"  />
         </SafeAreaView>
 
     );
