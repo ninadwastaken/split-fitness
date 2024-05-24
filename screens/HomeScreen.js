@@ -1,11 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import {SafeAreaView, StyleSheet, Text, View, Platform} from 'react-native';
 
+
+
+const firstName = "Ninad";
+const d = new Date();
+const weekdays = ['Sunday', 'Monday', "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const months = ["January", "February", "March", "April", "May", "June", "July", "August","September", "October", "November", "December"];
+
 export default function HomeScreen() {
+
+
   return (
       <SafeAreaView style={styles.container}>
-          <Text style={styles.helloText}>Hello,</Text>
-          <StatusBar style="auto" />
+        <Text style={styles.helloText}>Hello,</Text>
+        <Text style={styles.firstNameText}>{firstName}</Text>
+        <Text style={styles.dateText}>{weekdays[d.getDay()]},  {months[d.getMonth()]} {d.getDate()}</Text>
+        <StatusBar style="auto" />
       </SafeAreaView>
 
   );
@@ -23,7 +34,23 @@ const styles = StyleSheet.create({
   helloText: {
     alignSelf: 'flex-start',
     paddingLeft: 20,
+    fontSize: 27,
+    fontWeight: 'bold',
+    color: 'grey',
+  },
+  firstNameText: {
+    alignSelf: 'flex-start',
+    paddingLeft: 20,
+    paddingTop: 5,
     fontSize: 30,
     fontWeight: 'bold',
+  },
+  dateText: {
+    alignSelf: 'flex-start',
+    paddingLeft: 20,
+    paddingTop: 30,
+    fontSize: 23,
+    fontWeight: 'bold',
+    color: 'grey',
   }
 });

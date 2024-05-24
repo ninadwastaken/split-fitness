@@ -2,6 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './screens/HomeScreen';
+import ProfileScreen from './screens/ProfileScreen';
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Tab = createBottomTabNavigator();
@@ -22,8 +23,12 @@ export default function App() {
                     }}
                 />
                 <Tab.Screen
-                    name="Home2"
-                    component={HomeScreen} />
+                    name="Profile"
+                    component={ProfileScreen}
+                    options={{
+                        tabBarIcon: () => <Ionicons name="person-outline" size={24} color="black" />,
+                    }}
+                />
             </Tab.Navigator>
         </NavigationContainer>
     );
