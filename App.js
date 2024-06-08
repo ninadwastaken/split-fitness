@@ -6,6 +6,7 @@ import { getDatabase } from '@firebase/database';
 import TabNavigation from "./TabNavigation";
 import AuthScreen from './screens/AuthScreen';
 import firebaseConfig from './firebaseConfig';
+import writeUserData from "./firebase_fns/writeData";
 
 
 const app = initializeApp(firebaseConfig);
@@ -47,6 +48,7 @@ export default App = () => {
                     // Sign up
                     await createUserWithEmailAndPassword(auth, email, password);
                     console.log('User created successfully!');
+                    writeUserData(database, email, name);
                 }
             }
         } catch (error) {

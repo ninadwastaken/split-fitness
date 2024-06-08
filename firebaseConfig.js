@@ -8,3 +8,5 @@ const firebaseConfig = {
     measurementId: "G-KDCX7Z6SR2",
     databaseURL: "https://split-fitness-eb3af-default-rtdb.firebaseio.com",
 };
+
+export default firebaseConfig;
