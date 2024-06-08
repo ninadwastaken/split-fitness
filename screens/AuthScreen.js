@@ -2,7 +2,6 @@ import {Button, Text, TextInput, View, StyleSheet, Platform, Alert} from "react-
 import React from "react";
 
 export default AuthScreen = ({ email, setEmail, password, setPassword, name, setName, isLogin, setIsLogin, handleAuthentication }) => {
-    console.log(isLogin);
     return (
         <View style={styles.authContainer}>
             <Text style={styles.title}>{isLogin ? 'Sign In' : 'Sign Up'}</Text>

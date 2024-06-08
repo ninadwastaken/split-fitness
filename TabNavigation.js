@@ -7,7 +7,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Tab = createBottomTabNavigator();
 
-export default function TabNavigation() {
+export default function TabNavigation(database) {
     return (
         <NavigationContainer>
             <Tab.Navigator
@@ -16,7 +16,8 @@ export default function TabNavigation() {
             }}>
                 <Tab.Screen
                     name="Home"
-                    component={HomeScreen}
+                    // component={HomeScreen}
+                    children={()=><HomeScreen database={database}/>}
                     options={{
                         tabBarIcon: () => <Ionicons name="home" size={24} color="black" />,
                         headerShown: false,
@@ -24,7 +25,8 @@ export default function TabNavigation() {
                 />
                 <Tab.Screen
                     name="Profile"
-                    component={ProfileScreen}
+                    // component={ProfileScreen}
+                    children={()=><ProfileScreen />}
                     options={{
                         tabBarIcon: () => <Ionicons name="person-outline" size={24} color="black" />,
                     }}

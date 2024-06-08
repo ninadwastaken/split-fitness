@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import {SafeAreaView, StyleSheet, Text, View, Platform} from 'react-native';
+import { readUserData } from '../firebase_fns/userDataFns';
 
 
 
@@ -8,7 +9,9 @@ const d = new Date();
 const weekdays = ['Sunday', 'Monday', "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const months = ["January", "February", "March", "April", "May", "June", "July", "August","September", "October", "November", "December"];
 
-export default function HomeScreen() {
+export default function HomeScreen(database) {
+
+  console.log(readUserData(database, 'ninad2eyes@gmail.com'));
 
 
   return (

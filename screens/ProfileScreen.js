@@ -2,9 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import {SafeAreaView, StyleSheet, Text, View, Platform} from 'react-native';
 
 
-
 const firstName = "Ninad";
-
 export default function ProfileScreen() {
 
 
