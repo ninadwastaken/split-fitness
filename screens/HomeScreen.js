@@ -11,7 +11,7 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 
 export default function HomeScreen(database) {
 
-  console.log(readUserData(database, 'ninad2eyes@gmail.com'));
+  readUserData(database, 'ninad2eyes@gmail.com');
 
 
   return (
