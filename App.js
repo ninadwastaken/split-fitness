@@ -2,20 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView } from 'react-native';
 import { initializeApp } from '@firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from '@firebase/auth';
+import { getDatabase } from '@firebase/database';
 import TabNavigation from "./TabNavigation";
 import AuthScreen from './screens/AuthScreen';
+import firebaseConfig from './firebaseConfig';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyAPb93qPZSN6XXVPuVn7vpSbP1Yw6gHmC4",
-    authDomain: "split-fitness-eb3af.firebaseapp.com",
-    projectId: "split-fitness-eb3af",
-    storageBucket: "split-fitness-eb3af.appspot.com",
-    messagingSenderId: "102806762892",
-    appId: "1:102806762892:web:46ee1d26d1961d226ad2a9",
-    measurementId: "G-KDCX7Z6SR2"
-};
 
 const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 
 
