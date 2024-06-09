@@ -3,28 +3,26 @@ import { ref, set, get, child } from "firebase/database";
 export async function writeUserData(db, email, name) {
     const newEmail = changeEmail(email);
     await set(ref(db, 'users/' + newEmail), {
-        name: name,
+        name: name.charAt(0).toUpperCase() + name.slice(1),
     });
 }
 
 export async function readUserData(db, email) {
     const newEmail = changeEmail(email);
-    console.log('new email is ' + newEmail);
-    console.log(db);
 
     const dbRef = await ref(db);
-    console.log("im here 1");
+    let name = '';
 
     await get(child(dbRef, `users/${newEmail}/name`)).then((snapshot) => {
         if (snapshot.exists()) {
-            return snapshot.val();
+            name = snapshot.val();
         } else {
-            return 'name';
+            alert('name doesn\'t exist');
         }
     }).catch((error) => {
-        console.error(error);
+        alert(error);
     });
-    console.log("im here");
+    return name;
 }
 
 const changeEmail = (email) => {

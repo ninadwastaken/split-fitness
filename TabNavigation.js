@@ -7,9 +7,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Tab = createBottomTabNavigator();
 
-export default TabNavigation = ({ database }) => {
-    console.log('tabnav js');
-    console.log(database);
+export default TabNavigation = ({ database, user }) => {
 
     return (
         <NavigationContainer>
@@ -20,7 +18,12 @@ export default TabNavigation = ({ database }) => {
                 <Tab.Screen
                     name="Home"
                     // component={HomeScreen}
-                    children={()=><HomeScreen database={database}/>}
+                    children={()=>
+                        <HomeScreen
+                            database={database}
+                            user={user}
+                        />
+                    }
                     options={{
                         tabBarIcon: () => <Ionicons name="home" size={24} color="black" />,
                         headerShown: false,

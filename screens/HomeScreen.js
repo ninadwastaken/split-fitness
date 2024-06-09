@@ -1,29 +1,42 @@
-import { StatusBar } from 'expo-status-bar';
-import {SafeAreaView, StyleSheet, Text, View, Platform} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View, Platform, ActivityIndicator} from 'react-native';
 import { readUserData } from '../firebase_fns/userDataFns';
-
+import {useState, useEffect} from "react";
 
 
 const d = new Date();
 const weekdays = ['Sunday', 'Monday', "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const months = ["January", "February", "March", "April", "May", "June", "July", "August","September", "October", "November", "December"];
 
-export default function HomeScreen({ database }) {
-  console.log('homescreen js');
-  console.log(database);
+export default function HomeScreen({ database, user }) {
 
-  const firstName = readUserData(database, 'ninad2eyes@gmail.com');
+  const [isLoading, setIsLoading] = useState(true);
+  const [username, setUsername] = useState('name');
+  useEffect(() => {
+    readUserData(database, user.email)
+        .then((response) => {
+          setUsername(response);})
+        .catch((error) => {alert(error)})
+        .finally(() => setIsLoading(false));
+  }, [])
+
+
 
 
   return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.helloText}>Hello,</Text>
-        <Text style={styles.firstNameText}>{firstName}</Text>
+
+        {isLoading ? (
+            // TODO! make activity indicator the whole screen
+            <ActivityIndicator />
+        ) : (
+            <Text style={styles.firstNameText}>{username}</Text>
+        )}
+
         <Text style={styles.dateText}>{weekdays[d.getDay()]},  {months[d.getMonth()]} {d.getDate()}</Text>
-        <StatusBar style="auto" />
       </SafeAreaView>
 
-  );
+  )
 }
 
 const styles = StyleSheet.create({

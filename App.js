@@ -23,8 +23,7 @@ export default App = () => {
     const [name, setName] = useState('');
 
     const auth = getAuth(app);
-    console.log('app js');
-    console.log(database);
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setUser(user);
@@ -66,7 +65,10 @@ export default App = () => {
         >
             {user ? (
                 // Show user's email if user is authenticated
-                <TabNavigation database={database}/>
+                <TabNavigation
+                    database={database}
+                    user={user}
+                />
             ) : (
                 // Show sign-in or sign-up form if user is not authenticated
                 <AuthScreen
