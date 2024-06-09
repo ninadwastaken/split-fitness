@@ -7,7 +7,10 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Tab = createBottomTabNavigator();
 
-export default function TabNavigation(database) {
+export default TabNavigation = ({ database }) => {
+    console.log('tabnav js');
+    console.log(database);
+
     return (
         <NavigationContainer>
             <Tab.Navigator

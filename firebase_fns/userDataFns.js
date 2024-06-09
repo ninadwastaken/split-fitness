@@ -10,18 +10,20 @@ export async function writeUserData(db, email, name) {
 export async function readUserData(db, email) {
     const newEmail = changeEmail(email);
     console.log('new email is ' + newEmail);
-    const dbRef = ref(db,`users/${newEmail}`);
+    console.log(db);
+
+    const dbRef = await ref(db);
     console.log("im here 1");
 
-    dbRef.on('value', snapshot => {
-        console.log('snapshot: ', snapshot.val());
-    }, (errorObject) => {
-        console.log('The read failed: ' + errorObject.name);
-    })
-    // return await db.ref('/users/' + email).once('value').then((snapshot) => {
-    //     var username = (snapshot.val() && snapshot.val().name) || 'Anonymous';
-    // })
-    // console.log(await ref(db,'/users/' + email).once('value'));
+    await get(child(dbRef, `users/${newEmail}/name`)).then((snapshot) => {
+        if (snapshot.exists()) {
+            return snapshot.val();
+        } else {
+            return 'name';
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
     console.log("im here");
 }
 

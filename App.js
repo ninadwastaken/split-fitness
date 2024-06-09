@@ -23,6 +23,8 @@ export default App = () => {
     const [name, setName] = useState('');
 
     const auth = getAuth(app);
+    console.log('app js');
+    console.log(database);
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setUser(user);

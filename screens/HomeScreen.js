@@ -4,14 +4,15 @@ import { readUserData } from '../firebase_fns/userDataFns';
 
 
 
-const firstName = "Ninad";
 const d = new Date();
 const weekdays = ['Sunday', 'Monday', "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const months = ["January", "February", "March", "April", "May", "June", "July", "August","September", "October", "November", "December"];
 
-export default function HomeScreen(database) {
+export default function HomeScreen({ database }) {
+  console.log('homescreen js');
+  console.log(database);
 
-  readUserData(database, 'ninad2eyes@gmail.com');
+  const firstName = readUserData(database, 'ninad2eyes@gmail.com');
 
 
   return (
