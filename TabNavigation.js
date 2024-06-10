@@ -34,22 +34,26 @@ export default TabNavigation = ({ database, user }) => {
                     name="Workout"
                     children={()=>
                         <WorkoutScreen
+                            database={database}
+                            user={user}
                         />
                     }
                     options={{
                         tabBarIcon: () => <Ionicons name="barbell-outline" size={24} color="black" />,
-                        headerShown: false,
+                        // headerShown: false,
                     }}
                 />
                 <Tab.Screen
                     name="Diet"
                     children={()=>
                         <DietScreen
+                            database={database}
+                            user={user}
                         />
                     }
                     options={{
                         tabBarIcon: () => <Ionicons name="fast-food-outline" size={24} color="black" />,
-                        headerShown: false,
+                        // headerShown: false,
                     }}
                 />
                 <Tab.Screen
