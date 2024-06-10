@@ -3,31 +3,67 @@ import AnimatedProgressWheel from 'react-native-progress-wheel';
 import {useState} from "react";
 
 export default function DietScreen({ database, user }){
-    const [currCalories, setCurrCalories] = useState(2144);
+    const [consumedCalories, setConsumedCalories] = useState(1219);
+    const [burntCalories, setBurntCalories] = useState(90);
     const totalCalories = 2000;
+
+
+    const [carbs, setCarbs] = useState(10);
+    const [protein, setProtein] = useState(10);
+    const [fat, setFat] = useState(10);
+
+
 
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.caloriesView}>
                 <Text style={styles.caloriesHeading}>Calories</Text>
-                <AnimatedProgressWheel
-                    max={totalCalories}
-                    size={170}
-                    width={15}
-                    color={'orange'}
-                    progress={currCalories}
-                    backgroundColor={'lightblue'}
-                    showProgressLabel={true}
-                    rotation={'-90deg'}
-                    labelStyle={styles.wheelTitle}
-                    subtitle={`Consumed`}
-                    subtitleStyle={styles.wheelSubtitle}
-                    rounded={true}
-                />
+                <View style={{flexDirection: 'row'}}>
+                    <AnimatedProgressWheel
+                        max={totalCalories}
+                        size={170}
+                        width={15}
+                        color={'orange'}
+                        progress={consumedCalories - burntCalories}
+                        backgroundColor={'lightblue'}
+                        showProgressLabel={true}
+                        rotation={'-90deg'}
+                        labelStyle={styles.wheelTitle}
+                        subtitle={`Consumed`}
+                        subtitleStyle={styles.wheelSubtitle}
+                        rounded={true}
+                    />
+
+                    <View style={{paddingLeft: 25}}>
+                        <Text style={styles.caloriesSubHeadings}>Base Goal</Text>
+                        <Text>{totalCalories}</Text>
+                        <Text style={styles.caloriesSubHeadings}>Food</Text>
+                        <Text>{consumedCalories}</Text>
+                        <Text style={styles.caloriesSubHeadings}>Exercise</Text>
+                        <Text>{burntCalories}</Text>
+                    </View>
+                </View>
             </View>
 
-            <View style={styles.caloriesView}>
-
+            <View style={styles.macrosView}>
+                <View>
+                    <View style={styles.macrosSubView}>
+                        <Text>{protein} g</Text>
+                    </View>
+                    <Text style={styles.macrosNames}>Protein</Text>
+                </View>
+                <View>
+                    <View style={styles.macrosSubView}>
+                        <Text>{fat} g</Text>
+                    </View>
+                    <Text style={styles.macrosNames}>Fat</Text>
+                </View>
+                <View>
+                    <View style={styles.macrosSubView}>
+                        <Text>{carbs} g</Text>
+                    </View>
+                    <Text style={styles.macrosNames}>Carbs</Text>
+                </View>
             </View>
         </SafeAreaView>
     )
@@ -55,5 +91,29 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 20,
+    },
+    caloriesSubHeadings: {
+        paddingTop: 18,
+        fontWeight: 'bold',
+    },
+
+    macrosView: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        margin: 20,
+        padding: 20,
+        backgroundColor: 'white',
+        borderRadius: 10,
+    },
+    macrosSubView: {
+        backgroundColor: 'lightgrey',
+        width: 50,
+        borderRadius: 5,
+        alignItems: 'center',
+        margin: 2,
+        padding: 10,
+    },
+    macrosNames: {
+        textAlign: 'center',
     }
 })
