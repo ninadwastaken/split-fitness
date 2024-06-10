@@ -1,4 +1,4 @@
-import {SafeAreaView, StyleSheet, Text, View, Platform, ActivityIndicator} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View, Platform, ActivityIndicator, TouchableOpacity, Dimensions} from 'react-native';
 import AnimatedProgressWheel from 'react-native-progress-wheel';
 import {useState} from "react";
 
@@ -65,8 +65,23 @@ export default function DietScreen({ database, user }){
                     <Text style={styles.macrosNames}>Carbs</Text>
                 </View>
             </View>
+
+            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <TouchableOpacity>
+                    <View style={styles.trackButtons}>
+                        <Text style={styles.trackButtonsText}>Track Meal</Text>
+                    </View>
+
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <View style={styles.trackButtons}>
+                        <Text style={styles.trackButtonsText}>Track Exercise</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     )
+
 }
 
 const styles = StyleSheet.create({
@@ -101,6 +116,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         margin: 20,
+        marginTop: 0,
         padding: 20,
         backgroundColor: 'white',
         borderRadius: 10,
@@ -115,5 +131,20 @@ const styles = StyleSheet.create({
     },
     macrosNames: {
         textAlign: 'center',
+    },
+    trackButtons: {
+        backgroundColor: 'lightgrey',
+        padding: 10,
+        margin: 20,
+        borderRadius: 8,
+        width: Dimensions.get('window').width / 2.5,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: 'darkgrey',
+    },
+    trackButtonsText: {
+        textAlign: 'center',
+        textWeight: 'bold',
+        fontSize: 15,
     }
 })
