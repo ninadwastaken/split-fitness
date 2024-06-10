@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import Ionicons from "@expo/vector-icons/Ionicons";
+import WorkoutScreen from "./screens/WorkoutScreen";
+import DietScreen from "./screens/DietScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,7 +19,6 @@ export default TabNavigation = ({ database, user }) => {
             }}>
                 <Tab.Screen
                     name="Home"
-                    // component={HomeScreen}
                     children={()=>
                         <HomeScreen
                             database={database}
@@ -26,6 +27,28 @@ export default TabNavigation = ({ database, user }) => {
                     }
                     options={{
                         tabBarIcon: () => <Ionicons name="home" size={24} color="black" />,
+                        headerShown: false,
+                    }}
+                />
+                <Tab.Screen
+                    name="Workout"
+                    children={()=>
+                        <WorkoutScreen
+                        />
+                    }
+                    options={{
+                        tabBarIcon: () => <Ionicons name="barbell-outline" size={24} color="black" />,
+                        headerShown: false,
+                    }}
+                />
+                <Tab.Screen
+                    name="Diet"
+                    children={()=>
+                        <DietScreen
+                        />
+                    }
+                    options={{
+                        tabBarIcon: () => <Ionicons name="fast-food-outline" size={24} color="black" />,
                         headerShown: false,
                     }}
                 />
