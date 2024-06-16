@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from './screens/HomeScreen';
-import ProfileScreen from './screens/ProfileScreen';
+import HomeScreen from './HomeScreen';
+import ProfileScreen from './ProfileScreen';
 import Ionicons from "@expo/vector-icons/Ionicons";
-import WorkoutScreen from "./screens/WorkoutScreen";
-import DietScreen from "./screens/DietScreen";
+import WorkoutScreen from "./WorkoutScreen";
+import DietScreen from "./DietScreen";
 
 const Tab = createBottomTabNavigator();
 
-export default TabNavigation = ({ database, user }) => {
-
+export default TabNavigation = ({ route, navigation }) => {
+    const { database, user } = route.params;
     return (
-        <NavigationContainer>
+        // <NavigationContainer>
             <Tab.Navigator
             screenOptions= {{
                 tabBarShowLabel: true,
@@ -36,6 +36,7 @@ export default TabNavigation = ({ database, user }) => {
                         <WorkoutScreen
                             database={database}
                             user={user}
+                            navigation={navigation}
                         />
                     }
                     options={{
@@ -65,7 +66,7 @@ export default TabNavigation = ({ database, user }) => {
                     }}
                 />
             </Tab.Navigator>
-        </NavigationContainer>
+        // </NavigationContainer>
     );
 }
 

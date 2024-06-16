@@ -4,17 +4,17 @@ import { createStackNavigator} from "@react-navigation/stack";
 import TemplateWorkoutScreen from "./TemplateWorkoutScreen";
 
 
-const Stack = createStackNavigator();
-export default function WorkoutScreen({ database, user }){
-    return (
-        <Stack.Navigator>
-            <Stack.Screen name="WorkoutList" component={WorkoutList} />
-            <Stack.Screen name="TemplateWorkoutScreen" component={TemplateWorkoutScreen} />
-        </Stack.Navigator>
-    )
-}
+// const Stack = createStackNavigator();
+// export default function WorkoutScreen({ database, user }){
+//     return (
+//         <Stack.Navigator>
+//             <Stack.Screen name="WorkoutList" component={WorkoutList} />
+//             <Stack.Screen name="TemplateWorkoutScreen" component={TemplateWorkoutScreen} />
+//         </Stack.Navigator>
+//     )
+// }
 
-function WorkoutList({navigation}){
+export default function WorkoutScreen({database, user, navigation}){
     const workout_names = ["urmom", "urdad"];
     return (
         <SafeAreaView style={styles.container}>

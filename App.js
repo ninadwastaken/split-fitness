@@ -4,14 +4,18 @@ import { View, Text, TextInput, Button, StyleSheet, ScrollView } from 'react-nat
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
-import TabNavigation from "./TabNavigation";
+import TabNavigation from "./screens/TabNavigation";
 import AuthScreen from './screens/AuthScreen';
 import firebaseConfig from './firebaseConfig';
 import { writeUserData } from "./assets/firebase_fns/userDataFns";
+import {createStackNavigator} from "@react-navigation/stack";
+import StackNavigation from "./screens/StackNavigation";
 
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+
+
 
 
 
@@ -66,7 +70,11 @@ export default App = () => {
         >
             {user ? (
                 // Show user's email if user is authenticated
-                <TabNavigation
+                // <TabNavigation
+                //     database={database}
+                //     user={user}
+                // />
+                <StackNavigation
                     database={database}
                     user={user}
                 />
