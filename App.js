@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView } from 'react-native';
 import { initializeApp } from 'firebase/app';
@@ -6,7 +7,7 @@ import { getDatabase } from 'firebase/database';
 import TabNavigation from "./TabNavigation";
 import AuthScreen from './screens/AuthScreen';
 import firebaseConfig from './firebaseConfig';
-import { writeUserData } from "./firebase_fns/userDataFns";
+import { writeUserData } from "./assets/firebase_fns/userDataFns";
 
 
 const app = initializeApp(firebaseConfig);

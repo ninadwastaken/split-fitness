@@ -1,5 +1,5 @@
 import {SafeAreaView, StyleSheet, Text, View, Platform, ActivityIndicator} from 'react-native';
-import { readUserData } from '../firebase_fns/userDataFns';
+import { readUserData } from '../assets/firebase_fns/userDataFns';
 import {useState, useEffect} from "react";
 
 
