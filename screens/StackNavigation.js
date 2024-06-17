@@ -8,7 +8,12 @@ const Stack = createStackNavigator();
 export default function StackNavigation({ database, user }) {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={TabNavigation}>
+            <Stack.Navigator
+                initialRouteName={TabNavigation}
+                screenOptions={{
+                    headerShown: false,
+                }}
+            >
                 <Stack.Screen
 
                     name="TabNavigation"
