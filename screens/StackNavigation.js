@@ -10,6 +10,7 @@ export default function StackNavigation({ database, user }) {
         <NavigationContainer>
             <Stack.Navigator initialRouteName={TabNavigation}>
                 <Stack.Screen
+
                     name="TabNavigation"
                     component={TabNavigation}
                     initialParams={{

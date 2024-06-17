@@ -7,7 +7,9 @@ export default function TemplateWorkout({ navigation, workout_name }){
         <TouchableOpacity
             style={styles.container}
             onPress={() => {
-                navigation.navigate('TemplateWorkoutScreen');
+                navigation.navigate('TemplateWorkoutScreen', {
+                    workout_name: workout_name,
+                });
             }}
         >
 
