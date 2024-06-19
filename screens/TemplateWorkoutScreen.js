@@ -5,7 +5,7 @@ export default function TemplateWorkoutScreen({ route, navigation }) {
     const { workout_name } = route.params;
     const workout = {
         workout_name: 'best workout',
-        decline_bench: {
+        Decline_Bench: {
             1: { reps: 8, weight: 130 },
             2: { reps: 8, weight: 150 },
         },
@@ -14,6 +14,7 @@ export default function TemplateWorkoutScreen({ route, navigation }) {
             2: { reps: 1, weight: 90 },
         },
     }
+    // workout.workout_name = workout.workout_name.split('_').join(' ')
 
     const exercises = Object.keys(workout);
 
