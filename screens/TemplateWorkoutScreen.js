@@ -1,4 +1,5 @@
-import {View, StyleSheet, Text, SafeAreaView, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
+import Exercise from "../assets/components/exercise";
 
 export default function TemplateWorkoutScreen({ route, navigation }) {
     const { workout_name } = route.params;
@@ -14,14 +15,24 @@ export default function TemplateWorkoutScreen({ route, navigation }) {
         },
     }
 
+    const exercises = Object.keys(workout);
+
+
     // TODO! make workout page acc to sample workout data
 
     return (
         <SafeAreaView style={styles.container}>
             {/* title */}
-            <Text> {workout_name} </Text>
+            <Text> {workout.workout_name} </Text>
 
             {/* workout list */}
+
+            <FlatList
+                data={exercises}
+                renderItem={({item}) => <Exercise exercise_name={item} setsnreps={workout.item} />}
+            />
+
+
 
             {/* sample workout data:
                 workout_name:

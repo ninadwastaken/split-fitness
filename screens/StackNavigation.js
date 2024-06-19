@@ -11,7 +11,7 @@ export default function StackNavigation({ database, user }) {
             <Stack.Navigator
                 initialRouteName={TabNavigation}
                 screenOptions={{
-                    headerShown: false,
+                    // headerShown: false,
                 }}
             >
                 <Stack.Screen
@@ -22,10 +22,14 @@ export default function StackNavigation({ database, user }) {
                         database: database,
                         user: user
                     }}
+                    options={{
+                        headerShown: false,
+                    }}
                 />
                 <Stack.Screen
                     name="TemplateWorkoutScreen"
                     component={TemplateWorkoutScreen}
+                    options={({route}) => ({ title: route.params.workout_name})}
                 />
             </Stack.Navigator>
         </NavigationContainer>
