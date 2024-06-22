@@ -29,8 +29,8 @@ function Set({ setno, reps, weight }) {
     return (
         <View style={styles.setView}>
             <Text style={{fontWeight: 'bold',}}>{setno}</Text>
-            <Text>{reps}</Text>
             <Text>{weight}</Text>
+            <Text>{reps}</Text>
             <BouncyCheckbox
                 size={20}
                 fillColor="black"

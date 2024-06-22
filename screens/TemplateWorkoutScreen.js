@@ -1,5 +1,8 @@
-import {View, StyleSheet, Text, SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
+import {View, StyleSheet, Text, SafeAreaView, TouchableOpacity, FlatList, Dimensions} from 'react-native';
 import Exercise from "../assets/components/exercise";
+import { useRef, useEffect } from "react";
+import StopwatchTimer, { StopwatchTimerMethods } from 'react-native-animated-stopwatch-timer';
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function TemplateWorkoutScreen({ route, navigation }) {
     const { workout_name } = route.params;
@@ -21,6 +24,27 @@ export default function TemplateWorkoutScreen({ route, navigation }) {
 
 
     // TODO! make workout page acc to sample workout data
+
+    const stopwatchTimerRef = useRef(null);
+
+    // Methods to control the stopwatch
+    function play() {
+        stopwatchTimerRef.current?.play();
+    }
+
+    function pause() {
+        stopwatchTimerRef.current?.pause();
+    }
+
+    function reset() {
+        stopwatchTimerRef.current?.reset();
+    }
+
+    useEffect(() => {
+
+
+        play()
+    }, []);
 
     return (
         <SafeAreaView style={styles.container}>
@@ -61,28 +85,36 @@ export default function TemplateWorkoutScreen({ route, navigation }) {
             */}
 
             {/* timer and buttons */}
-            <TouchableOpacity
-                onPress={() => {navigation.navigate('TabNavigation')}}
-                style={[styles.endWorkoutButton, {bottom: 90}]}
-            >
+
+
+            <View style={styles.timerAndButtons}>
+                <View style={styles.timer}>
+                    <Ionicons
+                        name='time-outline'
+                        size={50}
+                    />
+                    <StopwatchTimer
+                        ref={stopwatchTimerRef}
+                        digitStyle={{fontWeight: 'bold', paddingTop: 5}}
+                    />
+                </View>
                 <View>
-                    <Text style={styles.endWorkoutButtonText}>
-                        Finish Workout
-                    </Text>
+                    <TouchableOpacity onPress={() => {navigation.navigate('TabNavigation')}}>
+                        <Text>Finish Workout</Text>
+                    </TouchableOpacity>
+
+
+                    <TouchableOpacity onPress={() => {navigation.navigate('TabNavigation')}}>
+                        <Text>End Workout</Text>
+                    </TouchableOpacity>
+
                 </View>
 
-            </TouchableOpacity>
-            <TouchableOpacity
-                onPress={() => {navigation.navigate('TabNavigation')}}
-                style={styles.endWorkoutButton}
-            >
-                <View>
-                    <Text style={styles.endWorkoutButtonText}>
-                        End Workout
-                    </Text>
-                </View>
 
-            </TouchableOpacity>
+            </View>
+                {/*onPress={() => {navigation.navigate('TabNavigation')}}*/}
+
+
         </SafeAreaView>
     )
 }
@@ -105,5 +137,18 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 30,
         right: 10,
+    },
+    timerAndButtons: {
+        position: 'absolute',
+        bottom: 10,
+        borderWidth: 1,
+        height: Dimensions.get('window').height / 6,
+        width: Dimensions.get('window').width,
+        padding: 10,
+        flexDirection: 'row',
+    },
+    timer: {
+        padding: 20,
+        alignItems: 'center',
     }
 })
