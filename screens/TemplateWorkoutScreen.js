@@ -19,8 +19,6 @@ export default function TemplateWorkoutScreen({ route, navigation }) {
     // workout.workout_name = workout.workout_name.split('_').join(' ')
 
     const exercises = Object.keys(workout);
-    console.log(exercises)
-    console.log(workout.Decline_Bench);
 
 
     // TODO! make workout page acc to sample workout data
@@ -49,7 +47,6 @@ export default function TemplateWorkoutScreen({ route, navigation }) {
     return (
         <SafeAreaView style={styles.container}>
             {/* title */}
-            <Text> {workout_name} </Text>
 
             {/* workout list */}
 
@@ -96,16 +93,22 @@ export default function TemplateWorkoutScreen({ route, navigation }) {
                     <StopwatchTimer
                         ref={stopwatchTimerRef}
                         digitStyle={{fontWeight: 'bold', paddingTop: 5}}
+                        decimalSeparator=":"
+                        trailingZeros={0}
                     />
                 </View>
                 <View>
-                    <TouchableOpacity onPress={() => {navigation.navigate('TabNavigation')}}>
-                        <Text>Finish Workout</Text>
+                    <TouchableOpacity
+                        style={[styles.endWorkoutButton, {backgroundColor: '#07CE00'}]}
+                        onPress={() => {navigation.navigate('TabNavigation')}}>
+                        <Text style={styles.endWorkoutButtonText}>Finish Workout</Text>
                     </TouchableOpacity>
 
 
-                    <TouchableOpacity onPress={() => {navigation.navigate('TabNavigation')}}>
-                        <Text>End Workout</Text>
+                    <TouchableOpacity
+                        style={[styles.endWorkoutButton, {backgroundColor: '#FF0000'}]}
+                        onPress={() => {navigation.navigate('TabNavigation')}}>
+                        <Text style={styles.endWorkoutButtonText}>End Workout</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -132,11 +135,10 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: 'white',
         borderWidth: 1,
-        margin: 10,
+        margin: 7,
         padding: 10,
-        position: 'absolute',
-        bottom: 30,
-        right: 10,
+        flex: 1,
+        width: Dimensions.get('window').width * 0.67,
     },
     timerAndButtons: {
         position: 'absolute',
