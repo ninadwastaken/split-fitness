@@ -4,7 +4,6 @@ import Exercise from "../assets/components/exercise";
 export default function TemplateWorkoutScreen({ route, navigation }) {
     const { workout_name } = route.params;
     const workout = {
-        workout_name: 'best workout',
         Decline_Bench: {
             1: { reps: 8, weight: 130 },
             2: { reps: 8, weight: 150 },
@@ -17,6 +16,8 @@ export default function TemplateWorkoutScreen({ route, navigation }) {
     // workout.workout_name = workout.workout_name.split('_').join(' ')
 
     const exercises = Object.keys(workout);
+    console.log(exercises)
+    console.log(workout.Decline_Bench);
 
 
     // TODO! make workout page acc to sample workout data
@@ -24,13 +25,14 @@ export default function TemplateWorkoutScreen({ route, navigation }) {
     return (
         <SafeAreaView style={styles.container}>
             {/* title */}
-            <Text> {workout.workout_name} </Text>
+            <Text> {workout_name} </Text>
 
             {/* workout list */}
 
             <FlatList
                 data={exercises}
-                renderItem={({item}) => <Exercise exercise_name={item} setsnreps={workout.item} />}
+                renderItem={({item}) => <Exercise exercise_name={item} setsnreps={workout[item]}/>
+                }
             />
 
 
